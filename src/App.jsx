@@ -79,196 +79,7 @@ function App() {
     }
   };
 
-  var estadio = d3.select("#estadio");
-  var svg = estadio.append("svg")
-    .attr("width", configStadio.ancho)
-    .attr("height", configStadio.alto);
-
-  // Define la función para crear la forma de media dona
-  var arcNortSup = d3.arc()
-    // .padAngle(0.03)
-    .innerRadius(126)
-    .outerRadius(175)
-    .startAngle(Math.PI * 1)
-    .endAngle(Math.PI * 2);
-
-  var arcNortInf = d3.arc()
-    // .padAngle(0.05)
-    .innerRadius(124)
-    .outerRadius(50)
-    .startAngle(Math.PI * 1)
-    .endAngle(Math.PI * 2);
-
-  var arcSurSup = d3.arc()
-    // .padAngle(0.03)
-    .innerRadius(126)
-    .outerRadius(175)
-    .startAngle(Math.PI * -1)
-    .endAngle(Math.PI * -2);
-
-  var arcSurInf = d3.arc()
-    // .padAngle(0.05)
-    .innerRadius(50)
-    .outerRadius(124)
-    .startAngle(Math.PI * -1)
-    .endAngle(Math.PI * -2);
-
-  // Crea un grupo para cada sección del estadio
-  var secciones = svg.selectAll("g")
-    .data(seccionesEstadio)
-    .enter()
-    .append("g");
-
-  // Crea los elementos SVG para cada sección del estadio
-  secciones.filter(function (d) { return d.nombre == "Curva Norte"; })
-  .append("path").style("cursor", "pointer")
-  .attr("d", arcNortSup)
-  .attr("transform", function (d) {
-      return "translate(" + (d.nivelSuperior.x + (d.nivelSuperior.ancho / 2)) + "," + (d.nivelSuperior.y + (d.nivelSuperior.alto / 2)) + ")";
-  })
-  .attr("id", "curvaNorteSup")
-  .style("fill", "#AA0000")
-  .style("stroke", "#000000")
-  .style("cursor", "pointer")
-  .on("click", function (d) {
-      console.log("click en curva norte - superior");
-      console.log(d);
-  });
-
-secciones.filter(function (d) { return d.nombre == "Curva Norte"; })
-  .append("path").style("cursor", "pointer")
-  .attr("d", arcNortInf)
-  .attr("transform", function (d) {
-      return "translate(" + (d.nivelInferior.x + (d.nivelInferior.ancho / 2)) + "," + (d.nivelInferior.y + (d.nivelInferior.alto / 2)) + ")";
-  })
-  .attr("id", "curvaNorteInf")
-  .style("fill", "#FA0000")
-  .style("stroke", "#000000")
-  .style("cursor", "pointer")
-  .on("click", function (d) {
-      console.log("click en curva norte - inferior");
-      console.log(d);
-  });
-
-secciones.filter(function (d) { return d.nombre == "Curva Sur"; })
-  .append("path").style("cursor", "pointer")
-  .attr("d", arcSurSup)
-  .attr("transform", function (d) {
-      return "translate(" + (d.nivelSuperior.x + (d.nivelSuperior.ancho / 2)) + "," + (d.nivelSuperior.y + (d.nivelSuperior.alto / 2)) + ")";
-  })
-  .attr("id", "curvaSurSup")
-  .style("fill", "#00AA00")
-  .style("stroke", "#000000")
-  .style("cursor", "pointer")
-  .on("click", function (d) {
-      console.log("click en curva sur - superior");
-      console.log(d);
-  });
-
-secciones.filter(function (d) { return d.nombre == "Curva Sur"; })
-  .append("path").style("cursor", "pointer")
-  .attr("d", arcSurInf)
-  .attr("transform", function (d) {
-      return "translate(" + (d.nivelInferior.x + (d.nivelInferior.ancho / 2)) + "," + (d.nivelInferior.y + (d.nivelInferior.alto / 2)) + ")";
-  })
-  .attr("id", "curvaSurInf")
-  .style("fill", "#00FA00")
-  .style("stroke", "#000000")
-  .style("cursor", "pointer")
-  .on("click", function (d) {
-      console.log("click en curva sur - inferior");
-      console.log(d);
-  });
-
-secciones.filter(function (d) { return d.nombre == "Recta General"; })
-  .append("rect").style("cursor", "pointer")
-  .attr("x", function (d) { return d.nivelSuperior.x; })
-  .attr("y", function (d) { return d.nivelSuperior.y; })
-  .attr("width", function (d) { return d.nivelSuperior.ancho; })
-  .attr("height", function (d) { return d.nivelSuperior.alto / 2; })
-  .style("fill", "#FAAA00")
-  .style("stroke", "#000000")
-  .style("cursor", "pointer")
-  .on("click", function (d) {
-      console.log("click en recta general - superior");
-      console.log(d);
-  });
-
-secciones.filter(function (d) { return d.nombre == "Recta General"; })
-  .append("rect").style("cursor", "pointer")
-  .attr("x", function (d) { return d.nivelInferior.x; })
-  .attr("y", function (d) { return d.nivelInferior.y - (d.nivelSuperior.alto / 2); })
-  .attr("width", function (d) { return d.nivelInferior.ancho; })
-  .attr("height", function (d) { return d.nivelInferior.alto / 2; })
-  .style("fill", "#FAFA00")
-  .style("stroke", "#000000")
-  .style("cursor", "pointer")
-  .on("click", function (d) {
-      console.log("click en recta general - inferior");
-      console.log(d);
-  });
-
-secciones.filter(function (d) { return d.nombre == "Preferencia"; })
-  .append("rect").style("cursor", "pointer")
-  .attr("x", function (d) { return d.nivelSuperior.x; })
-  .attr("y", function (d) { return d.nivelSuperior.y - (d.nivelInferior.alto / 2); })
-  .attr("width", function (d) { return d.nivelSuperior.ancho; })
-  .attr("height", function (d) { return d.nivelSuperior.alto / 2; })
-  .style("fill", "#0000FA")
-  .style("stroke", "#000000")
-  .style("cursor", "pointer")
-  .on("click", function (d) {
-      console.log("click en preferencia - superior");
-      console.log(d);
-  });
-
-secciones.filter(function (d) { return d.nombre == "Preferencia"; })
-  .append("rect").style("cursor", "pointer")
-  .attr("x", function (d) { return d.nivelInferior.x; })
-  .attr("y", function (d) { return d.nivelInferior.y; })
-  .attr("width", function (d) { return d.nivelInferior.ancho; })
-  .attr("height", function (d) { return d.nivelInferior.alto / 2; })
-  .style("fill", "#0000AA")
-  .style("stroke", "#000000")
-  .style("cursor", "pointer")
-  .on("click", function (d) {
-      console.log("click en preferencia - inferior");
-      console.log(d);
-  });
-/* asta aca parece funcionar */
-// Define las propiedades del palcos
-const palcos = {
-  x: 215,
-  y: 377,
-  baseInf: 150,
-  baseSup: 200,
-  altura: 50
-};
-
-// Crea un array con los puntos del palcos
-const points = [
-  [palcos.x, palcos.y],
-  [palcos.x + palcos.baseInf, palcos.y],
-  [palcos.x + palcos.baseSup + (palcos.baseInf - palcos.baseSup) / 2, palcos.y + palcos.altura],
-  [palcos.x + (palcos.baseInf - palcos.baseSup) / 2, palcos.y + palcos.altura],
-  [palcos.x, palcos.y]
-];
-
-// Crea una función que genere un camino SVG
-const lines = d3.line();
-
-// Agrega el palcos a los sectores
-svg.append("g")
-  .append("path")
-  .attr("d", lines(points))
-  .attr("fill", "#00AFFF")
-  .style("cursor", "pointer")
-  .on("click", function (d) {
-      console.log("click en palcos vip");
-      console.log(d);
-  });
-
-
+ 
 // Datos de las butacas
 var butacas = [
   { fila: 1, columna: "A", estado: 'disponible' },
@@ -336,6 +147,9 @@ const estados = {
   ocupado: 'ocupaado',
   reservado: 'disponible'
 };
+
+
+
 // Creación del mapa
 var svg = d3.select("#mapa").append("svg")
   .attr("width", config.ancho)
@@ -424,10 +238,12 @@ btcs.append("text")
   
   return (
     <>
+
+      {/* <div ref={esta}>a</div> */}
       {/* Aquí se inyecta el SVG del estadio */}
-      <div id="estadio">123</div>
+      <div>11</div>
       {/*  aquí se inyecta el SVG del site map */}
-      <div id="mapa"></div>
+      <div id="mapa">a</div>
 
     </>
   )
