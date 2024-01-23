@@ -4,81 +4,6 @@ import { useRef, useEffect } from "react";
 
 function App() {
   const [count, setCount] = useState(0)
-  // TODO INTENTO DE PASAR JS STADIUM A REACT
-  let seccionesEstadio = [
-    {
-      nombre: "Curva Norte",
-      nivelSuperior: {
-        x: 80,
-        y: 50,
-        ancho: 200,
-        alto: 300
-      },
-      nivelInferior: {
-        x: 80,
-        y: 50,
-        ancho: 200,
-        alto: 300
-      }
-    },
-    {
-      nombre: "Curva Sur",
-      nivelSuperior: {
-        x: 300,
-        y: 50,
-        ancho: 200,
-        alto: 300
-      },
-      nivelInferior: {
-        x: 300,
-        y: 50,
-        ancho: 200,
-        alto: 300
-      }
-    },
-    {
-      nombre: "Recta General",
-      nivelSuperior: {
-        x: 182,
-        y: 26,
-        ancho: 215,
-        alto: 95
-      },
-      nivelInferior: {
-        x: 182,
-        y: 123,
-        ancho: 215,
-        alto: 150
-      }
-    },
-    {
-      nombre: "Preferencia",
-      nivelSuperior: {
-        x: 190,
-        y: 298,
-        ancho: 200,
-        alto: 150
-      },
-      nivelInferior: {
-        x: 190,
-        y: 327,
-        ancho: 200,
-        alto: 95
-      }
-    }
-  ];
-
-  let configStadio = {
-    ancho: 585,
-    alto: 450,
-    margen: {
-      superior: 10,
-      inferior: 10,
-      izquierdo: 10,
-      derecho: 10
-    }
-  };
-
  
 // Datos de las butacas
 var butacas = [
@@ -151,7 +76,8 @@ const estados = {
 
 
 // Creación del mapa
-var svg = d3.select("#mapa").append("svg")
+var svg = d3.select("#mapa")
+  .append("svg")
   .attr("width", config.ancho)
   .attr("height", config.alto);
 
@@ -238,13 +164,12 @@ btcs.append("text")
   
   return (
     <>
-
       {/* <div ref={esta}>a</div> */}
       {/* Aquí se inyecta el SVG del estadio */}
-      <div>11</div>
+      <div>2</div>
       {/*  aquí se inyecta el SVG del site map */}
       <div id="mapa">a</div>
-
+      
     </>
   )
 }

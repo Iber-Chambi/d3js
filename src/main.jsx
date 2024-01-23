@@ -7,6 +7,7 @@ import Margen from './Mg.jsx'
 import Mgv2 from './Mgv2.jsx'
 import Mgv3 from './Mgv3.jsx'
 import Mgv4 from './Mgv4.jsx'
+import { Butacas } from './butacas.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -16,6 +17,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     {/* <LinePlot /> */}
     {/* <Mgv2 /> */}
     {/* <Mgv3 /> */}
-    <Mgv4 />
-  </React.StrictMode>,
+    {/* <Mgv4 /> */}
+    <Butacas/>
+  </React.StrictMode>
 )
