@@ -51,12 +51,21 @@ const Mgv3 = () => {
         // .paddingOuter(0.7)
 
     const yAxis = d3.axisLeft(y)
+                    .ticks(3)
+                    .tickFormat(d => `${d} unit`)
     const xAxis = d3.axisBottom(x)
 
     useEffect(()=>{
         if(!selection){
             setSelection(d3.select(ref.current))
         } else {
+             //fondo azul
+             selection
+             .append('rect')
+             .attr('width',dimensions.width)
+             .attr('height',dimensions.height)
+             .attr('fill','blue')
+             
             const xAxisGroup = selection
                 .append('g')
                 .attr('transform',`translate(${dimensions.marginLeft},${dimensions.chartHeight})`)
@@ -67,11 +76,7 @@ const Mgv3 = () => {
                 .attr('transform',`translate(${dimensions.marginLeft},0)`)
                 .call(yAxis)
 
-            // selection
-            //     .append('rect')
-            //     .attr('width',dimensions.width)
-            //     .attr('height',dimensions.height)
-            //     .attr('fill','blue')
+           
 
             selection
                 .append('g')

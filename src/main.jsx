@@ -6,6 +6,7 @@ import Circles from './Circles.jsx'
 import Margen from './Mg.jsx'
 import Mgv2 from './Mgv2.jsx'
 import Mgv3 from './Mgv3.jsx'
+import Mgv4 from './Mgv4.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -14,6 +15,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     {/* <Margen /> */}
     {/* <LinePlot /> */}
     {/* <Mgv2 /> */}
-    <Mgv3 />
+    {/* <Mgv3 /> */}
+    <Mgv4 />
   </React.StrictMode>,
 )
