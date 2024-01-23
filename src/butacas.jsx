@@ -94,8 +94,11 @@ export const Butacas = () => {
             .style("stroke-width", 1)
             .style("cursor", "pointer")
             .on("mouseover", function (d) {
+                //asi si console.log(d.target.__data__.fila) //asi no (d.explicitOriginalTarget.y.baseVal.value - 20) / 50 + 1
+                //asi si console.log(d.target.__data__.columna) //asi no String.fromCharCode(((d.explicitOriginalTarget.x.baseVal.value - 20) / 50 + 65))
                 seat.filter(seat => {
-                    if (seat.fila == (d.explicitOriginalTarget.y.baseVal.value - 20) / 50 + 1 && seat.columna == String.fromCharCode(((d.explicitOriginalTarget.x.baseVal.value - 20) / 50 + 65))) {
+                    // if (seat.fila == (d.explicitOriginalTarget.y.baseVal.value - 20) / 50 + 1 && seat.columna == String.fromCharCode(((d.explicitOriginalTarget.x.baseVal.value - 20) / 50 + 65))) {
+                    if (seat.fila == d.target.__data__.fila && seat.columna == d.target.__data__.columna ) {
                         if (seat.estado == 'disponible') {
                             d3.select(this)
                                 .style("fill", "#FFF");
@@ -115,7 +118,7 @@ export const Butacas = () => {
             })
             .on("click", function (d) {
                 seat.every(butaca => {
-                    if (butaca.fila == (d.explicitOriginalTarget.y.baseVal.value - 20) / 50 + 1 && butaca.columna == String.fromCharCode(((d.explicitOriginalTarget.x.baseVal.value - 20) / 50 + 65))) {
+                    if (butaca.fila == d.target.__data__.fila && butaca.columna == d.target.__data__.columna) {
                         butaca.estado = status[butaca.estado]
                         if (butaca.estado == 'disponible') {
                             d3.select(this).style("fill", colors[butaca.estado]());
